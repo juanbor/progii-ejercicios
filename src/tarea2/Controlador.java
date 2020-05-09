@@ -25,6 +25,10 @@ public class Controlador {
 	 */
 	
 	private ArrayList<Integrante> integrantes;
+	
+	public Controlador() {
+		this.integrantes = new ArrayList<Integrante>();
+	}
 
 	public void crearFutbolista(int id, String nombre, String apellido, LocalDate fechaNac, int dorsal) {
 		this.integrantes.add(new Futbolista(id, nombre, apellido, fechaNac, dorsal));
@@ -82,6 +86,14 @@ public class Controlador {
 		}
 		
 		return integr;
+	}
+	
+	public void imprimir() {
+		for(int i = 0; i<this.integrantes.size(); i++) {
+			System.out.println(this.integrantes.get(i).getNombre());
+		}
+		
+		System.out.println(" ");
 	}
 	
 
