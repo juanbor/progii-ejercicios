@@ -52,6 +52,17 @@ public class pantalla extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	private void limpiarPantallaAgregarIntegrante() {
+		textField.setText("");
+		textField_1.setText("");
+		textField_2.setText("");
+		textField_3.setText("");
+		textField_4.setText("");
+		textField_5.setText("");
+		textField_6.setText("");
+	}
+	
 	public pantalla() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -172,6 +183,7 @@ public class pantalla extends JFrame {
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		
+		
 		btnCancelar.setBounds(104, 463, 117, 29);
 		panelFormulario.add(btnCancelar);
 		
@@ -233,20 +245,42 @@ public class pantalla extends JFrame {
 						
 						c.crearEntrenador(1, textField.getText(), textField_1.getText(), LocalDate.of(anio, mes, dia), idFed);
 						
-					}else {
+					}else if(chckbxFutbolista.isSelected()){
 						int dorsal = Integer.parseInt(textField_5.getText());
 						c.crearFutbolista(1, textField.getText(), textField_1.getText(), LocalDate.of(anio, mes, dia), dorsal);
+					} else {
+						throw new Exception("Se esperaba el check en algun lugar");
 					}
 					
-					c.imprimir();
+					c.imprimir(); 
 					
-				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null, "Estas ingresando cualquiera, amistad");
-					ex.printStackTrace();
+					limpiarPantallaAgregarIntegrante();
+					chckbxEntrenador.setSelected(false);
+					chckbxMasajista.setSelected(false);
+					chckbxFutbolista.setSelected(false);
+					
+					
+				} catch (ClassCastException ex) {
+					JOptionPane.showMessageDialog(null, "Imposible transformar una letra o palabra en un numero.");
+					//ex.printStackTrace();
+					
+				} catch (Exception ex1) { 
+					JOptionPane.showMessageDialog(null, ex1.getMessage());
 				}
 				
 				
 			}
 		});
+		
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiarPantallaAgregarIntegrante();
+				chckbxEntrenador.setSelected(false);
+				chckbxMasajista.setSelected(false);
+				chckbxFutbolista.setSelected(false);
+			}
+		});
+		
+		
 	}
 }

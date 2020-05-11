@@ -32,7 +32,6 @@ public class Controlador {
 
 	public void crearFutbolista(int id, String nombre, String apellido, LocalDate fechaNac, int dorsal) {
 		this.integrantes.add(new Futbolista(id, nombre, apellido, fechaNac, dorsal));
-		
 		actualizarMasajistas();
 	}
 	
