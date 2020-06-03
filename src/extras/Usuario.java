@@ -1,34 +1,19 @@
-package tarea2;
+package extras;
 
 import java.time.LocalDate;
 
-public class Integrante {
-	/*
-	- id: int
-	- nombre: String
-	- apellido: String 
-	- fechaNac: LocalDate
-	 */
-	
-	private int id;
+public class Usuario {
 	private String nombre;
 	private String apellido;
 	private LocalDate fechaNac;
+	private int ci;
 	
-	public Integrante(int id, String nombre, String apellido, LocalDate fechaNac) {
+	public Usuario(String nombre, String apellido, LocalDate fechaNac, int ci) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.fechaNac = fechaNac;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+		this.ci = ci;
 	}
 
 	public String getNombre() {
@@ -54,9 +39,12 @@ public class Integrante {
 	public void setFechaNac(LocalDate fechaNac) {
 		this.fechaNac = fechaNac;
 	}
-	
-	
-	
-	
-	
+
+	public int getCi() {
+		return ci;
+	}
+
+	public void setCi(int ci) {
+		this.ci = ci;
+	}
 }

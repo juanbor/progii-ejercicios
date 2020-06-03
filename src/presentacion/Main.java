@@ -1,12 +1,14 @@
-package main;
+package presentacion;
 
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import tarea1.Docente;
-import tarea1.Estudiante;
-import tarea1.Materia;
-import tarea1.Usuario;
+import persistencia.Conn;
+import extras.Docente;
+import extras.Estudiante;
+import extras.Materia;
+import extras.Usuario;
 
 public class Main {
 
@@ -21,7 +23,7 @@ public class Main {
 		El objeto d2, dicta m4..m5
 		*/
 		
-		Materia m1 = new Materia("Prog I", 2);
+		/*Materia m1 = new Materia("Prog I", 2);
 		Materia m2 = new Materia("Prog II", 3);
 		Materia m3 = new Materia("Prog III", 3);
 		Materia m4 = new Materia("Math", 6);
@@ -83,7 +85,69 @@ public class Main {
 		materias.add(m4);
 		materias.add(m5);
 		
-		System.out.println(usuarios.get(0).getNombre());
+		System.out.println(usuarios.get(0).getNombre());*/
+		
+		
+		Conn connect = new Conn();
+		
+		Connection con = connect.conectarMySQL();
+		
+		Statement s;
+		ResultSet rs;
+		
+		String queSelecciono = "*";
+		String tabla = "alumnos";
+		
+		String query = "SELECT " + queSelecciono + " FROM " + tabla;
+		
+		try {
+			s = con.createStatement();
+			rs = s.executeQuery(query);
+
+			while (rs.next()) {
+				System.out.println(rs.getInt("ci") + " " + rs.getString("nombre") + " " + rs.getString("orientacion"));
+			}
+
+		}catch(SQLException ex) {
+			
+		}
+		
+		int ci = 1231232;
+		String nombre = "el chavo";
+		String orientacion = "TIC";
+		
+		//Alumno alum = new Alumno(1231232, "el chavo", "TIC");
+		//String update = "INSERT INTO " + tabla + " VALUES(" + alum.getCi() + ", '" + alum.getNombre() + "', '" + alum.getOrientacion() + "')";
+		
+		String update = "INSERT INTO " + tabla + " VALUES(" + ci + ", '" + nombre + "', '" + orientacion + "')";
+		
+		try {
+			s = con.createStatement();
+			s.executeUpdate("INSERT INTO alumnos VALUES (1231232, 'el chavo', 'TIC'");
+		}catch(SQLException ex) {
+			
+		}
+		
+		
+		/*
+		 * 
+		 * presentacion (pantalla.java, index.html)
+		 * 
+		 * 
+		 * logica (Entrenado, Futbolista, Controlador...)
+		 * 
+		 * 
+		 * persistencia (Conn, ControladorBD)
+		 * 
+		 * 
+		 */
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 

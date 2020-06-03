@@ -1,19 +1,34 @@
-package tarea1;
+package logica;
 
 import java.time.LocalDate;
 
-public class Usuario {
+public class Integrante {
+	/*
+	- id: int
+	- nombre: String
+	- apellido: String 
+	- fechaNac: LocalDate
+	*/
+	
+	private int id;
 	private String nombre;
 	private String apellido;
 	private LocalDate fechaNac;
-	private int ci;
 	
-	public Usuario(String nombre, String apellido, LocalDate fechaNac, int ci) {
+	public Integrante(int id, String nombre, String apellido, LocalDate fechaNac) {
 		super();
+		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.fechaNac = fechaNac;
-		this.ci = ci;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -39,12 +54,9 @@ public class Usuario {
 	public void setFechaNac(LocalDate fechaNac) {
 		this.fechaNac = fechaNac;
 	}
-
-	public int getCi() {
-		return ci;
-	}
-
-	public void setCi(int ci) {
-		this.ci = ci;
-	}
+	
+	
+	
+	
+	
 }

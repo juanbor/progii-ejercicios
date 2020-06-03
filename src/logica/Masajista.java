@@ -1,4 +1,4 @@
-package tarea2;
+package logica;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

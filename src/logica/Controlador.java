@@ -1,4 +1,4 @@
-package tarea2;
+package logica;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,24 +25,41 @@ public class Controlador {
 	 */
 	
 	private ArrayList<Integrante> integrantes;
+	private int id;
+	private static Controlador instancia = null;
 	
-	public Controlador() {
+	private Controlador() {
 		this.integrantes = new ArrayList<Integrante>();
+		this.id = 0;
+	}
+	
+	public static Controlador getInstancia() {
+		if (Controlador.instancia == null) {
+			Controlador.instancia = new Controlador();
+		}
+		
+		return Controlador.instancia;
+	}
+	
+	public int getLastId() {
+		return this.id-1;
 	}
 
-	public void crearFutbolista(int id, String nombre, String apellido, LocalDate fechaNac, int dorsal) {
-		this.integrantes.add(new Futbolista(id, nombre, apellido, fechaNac, dorsal));
+	public void crearFutbolista(String nombre, String apellido, LocalDate fechaNac, int dorsal) {
+		this.integrantes.add(new Futbolista(this.id, nombre, apellido, fechaNac, dorsal));
+		this.id++;
 		actualizarMasajistas();
 	}
 	
-	public void crearEntrenador(int id, String nombre, String apellido, LocalDate fechaNac, int idFederacion) {
-		this.integrantes.add(new Entrenador(id, nombre, apellido, fechaNac, idFederacion));
-		
+	public void crearEntrenador(String nombre, String apellido, LocalDate fechaNac, int idFederacion) {
+		this.integrantes.add(new Entrenador(this.id, nombre, apellido, fechaNac, idFederacion));
+		this.id++;
 		actualizarMasajistas();
 	}
 	
-	public void crearMasajista(int id, String nombre, String apellido, LocalDate fechaNac, ArrayList<Integrante> integrantes) {
-		Integrante masajistaNuevo = new Masajista(id, nombre, apellido, fechaNac);
+	public void crearMasajista(String nombre, String apellido, LocalDate fechaNac, ArrayList<Integrante> integrantes) {
+		Integrante masajistaNuevo = new Masajista(this.id, nombre, apellido, fechaNac);
+		this.id++;
 		this.integrantes.add(masajistaNuevo);
 		//((Masajista) masajistaNuevo).setIntegrantes(this.integrantes);
 		
