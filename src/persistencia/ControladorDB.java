@@ -83,4 +83,53 @@ public class ControladorDB {
 		
 		return integrantes;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * 
+		public void addCalificacion(in calif:Calificacion, in idPelicula:int){
+			ControladorDB cdb = new ControladorDB()
+			cdb.asociarCalificacionPelicula(calif, idPelicula);
+		
+		}
+		
+		
+		
+		public class ControladrDB {
+			public void asociarCalificacionPelicula(Calificacion calif, int idPelicula){
+				int tipo_calif;
+				
+				try{
+					IDMB califIMDB = calif(IMDB);
+					tipo_calif = 0;
+				}(catch ClassCastException e){
+					RottenTomatoes califRT = calif(RottenTomatoes);
+					tipos_calif = 1;
+				
+				}(catch ClassCastException e1){
+					tipo_calif = 2;
+				}
+				
+				String values = calif.getCalificacion() + ", " + tipo_calif + ", " + idPelicula;
+				
+			}
+
+		}
+	 */
+
 }
